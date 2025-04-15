@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda | Pilar & Javi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+        
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .section-divider {
+            width: 100px;
+            height: 3px;
+            background: #d4a373;
+            margin: 20px auto;
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .rsvp-form input, .rsvp-form select, .rsvp-form textarea {
+            border-bottom: 1px solid #d4a373;
+            transition: all 0.3s ease;
+        }
+        
+        .rsvp-form input:focus, .rsvp-form select:focus, .rsvp-form textarea:focus {
+            border-bottom: 2px solid #d4a373;
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+        
+        .transport-icon {
+            background-color: #d4a373;
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .transport-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background: #f8f4f0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white bg-opacity-90 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl title-font text-gray-800">Pilar & Javi</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="hover:text-amber-700 transition">Inicio</a>
+                    <a href="#nosotros" class="hover:text-amber-700 transition">Nosotros</a>
+                    <a href="#evento" class="hover:text-amber-700 transition">El Evento</a>
+                    <a href="#transporte" class="hover:text-amber-700 transition">Transporte</a>
+                    <a href="#confirmar" class="hover:text-amber-700 transition">Confirmar</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="menu-btn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div class="md:hidden hidden mt-4" id="mobile-menu">
+                <a href="#inicio" class="block py-2 hover:text-amber-700 transition">Inicio</a>
+                <a href="#nosotros" class="block py-2 hover:text-amber-700 transition">Nosotros</a>
+                <a href="#evento" class="block py-2 hover:text-amber-700 transition">El Evento</a>
+                <a href="#transporte" class="block py-2 hover:text-amber-700 transition">Transporte</a>
+                <a href="#confirmar" class="block py-2 hover:text-amber-700 transition">Confirmar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero flex items-center justify-center text-center text-white relative" id="inicio">
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+            <div class="px-6">
+                <h1 class="title-font text-4xl md:text-6xl mb-4 animate-pulse-slow">Pilar & Javi</h1>
+                <p class="text-xl md:text-2xl mb-8">Nos casamos el 30 de Mayo, 2026</p>
+                <div class="countdown-box rounded-lg p-6 max-w-md mx-auto">
+                    <h3 class="text-xl mb-4 title-font">Faltan</h3>
+                    <div class="flex justify-center space-x-4" id="countdown">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold days">00</div>
+                            <div class="text-sm">Días</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold hours">00</div>
+                            <div class="text-sm">Horas</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold minutes">00</div>
+                            <div class="text-sm">Minutos</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold seconds">00</div>
+                            <div class="text-sm">Segundos</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#confirmar" class="mt-8 inline-block bg-amber-700 hover:bg-amber-800 text-white px-8 py-3 rounded-full transition duration-300">Confirmar Asistencia</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros Section -->
+    <section class="py-20 px-6" id="nosotros">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl title-font text-center mb-4">Nuestra Historia</h2>
+            <div class="section-divider"></div>
+            <p class="text-center max-w-2xl mx-auto mb-12">Nos conocimos en Albacete y desde entonces hemos compartido una vida llena de amor, aventuras y sueños juntos.</p>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12 mb-16">
+                <div class="text-center md:w-1/3">
+                    <div class="rounded-full overflow-hidden w-48 h-48 mx-auto mb-6 shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80" alt="Pilar" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl title-font mb-2">Pilar</h3>
+                    <p class="text-gray-600">"Javi me robó el corazón con su sonrisa y su bondad. No puedo esperar para ser su esposa."</p>
+                </div>
+                
+                <div class="text-center md:w-1/3">
+                    <div class="rounded-full overflow-hidden w-48 h-48 mx-auto mb-6 shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Javi" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl title-font mb-2">Javi</h3>
+                    <p class="text-gray-600">"Pilar es mi mejor amiga y el amor de mi vida. Estoy emocionado por comenzar esta nueva etapa juntos."</p>
+                </div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-amber-50 p-8 rounded-lg shadow-sm">
+                <h3 class="text-2xl title-font text-center mb-6">Cómo nos conocimos</h3>
+                <p class="text-gray-700 mb-4">Todo comenzó en una tarde de verano en Albacete. Pilar estaba disfrutando de un helado en el parque Abelardo Sánchez cuando Javi, que pasaba por allí, se atrevió a pedirle un poco de su helado favorito.</p>
+                <p class="text-gray-700 mb-4">Después de ese primer encuentro casual, comenzaron a verse más a menudo, descubriendo que compartían el amor por su tierra, La Mancha, y por las pequeñas cosas de la vida.</p>
+                <p class="text-gray-700">Después de años de relación, Javi propuso matrimonio durante un paseo por el campo manchego al atardecer, con las vistas de los molinos de viento de fondo. Por supuesto, Pilar dijo que sí entre lágrimas de felicidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evento Section -->
+    <section class="py-20 px-6 bg-gray-50" id="evento">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl title-font text-center mb-4">Detalles del Evento</h2>
+            <div class="section-divider"></div>
+            <p class="text-center max-w-2xl mx-auto mb-12">Únase a nosotros para celebrar nuestro amor en este día especial</p>
+            
+            <div class="flex flex-col md:flex-row gap-8 max-w-6xl mx-auto">
+                <!-- Ceremonia -->
+                <div class="bg-white p-8 rounded-lg shadow-sm flex-1">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-ring text-4xl text-amber-700 mb-4"></i>
+                        <h3 class="text-2xl title-font mb-2">Ceremonia</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-calendar-alt text-amber-700 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-semibold">Fecha</h4>
+                                <p>30 de Mayo, 2026</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-clock text-amber-700 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-semibold">Hora</h4>
+                                <p>12:30 PM</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-amber-700 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-semibold">Lugar</h4>
+                                <p>Parroquia Ntra. Sra. del Pilar</p>
+                                <p>La Herrera, Albacete</p>
+                                <a href="https://goo.gl/maps/example" target="_blank" class="text-amber-700 hover:underline mt-1 inline-block">Ver en mapa</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-info-circle text-amber-700 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-semibold">Notas</h4>
+                                <p>La ceremonia tendrá una duración aproximada de 1 hora. Se recomienda llegar con al menos 30 minutos de antelación.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recepción -->
+                <div class="bg-white p-8 rounded-lg shadow-sm flex-1">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-glass-cheers text-4xl text-amber-700 mb-4"></i>
+                        <h3 class="text-2xl title-font mb-2">Recepción</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-calendar-alt text-amber-700 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-semibold">Fecha</h4>
+                                <p>30 de Mayo, 2026</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-clock text-amber-700 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-semibold">Hora</h4>
+                                <p>2:30 PM</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-amber-700 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-semibold">Lugar</h4>
+                                <p>Finca Las Calabacicas</p>
+                                <p>La Herrera, Albacete</p>
+                                <a href="https://goo.gl/maps/example" target="_blank" class="text-amber-700 hover:underline mt-1 inline-block">Ver en mapa</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-info-circle text-amber-700 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-semibold">Notas</h4>
+                                <p>Cóctel de bienvenida al llegar, seguido de comida y baile. Habrá transporte disponible desde la iglesia a la finca.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dress Code -->
+            <div class="max-w-4xl mx-auto mt-12 bg-white p-8 rounded-lg shadow-sm">
+                <h3 class="text-2xl title-font text-center mb-6">Dress Code</h3>
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/2">
+                        <p class="text-gray-700 mb-4">Queremos que todos se sientan cómodos y elegantes en nuestro día especial. El código de vestimenta es formal.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-700 mt-1 mr-2"></i>
+                                <span>Hombres: Traje oscuro o de colores sobrios</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-700 mt-1 mr-2"></i>
+                                <span>Mujeres: Vestido largo o de cóctel elegante</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-700 mt-1 mr-2"></i>
+                                <span>Colores sugeridos: Tonos tierra, beige, azul marino, verde olivo</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times text-red-400 mt-1 mr-2"></i>
+                                <span>Evitar: Jeans, camisetas, colores demasiado brillantes o blanco (reservado para la novia)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1539109132441-3b65c4a5c253?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Dress code example" class="rounded-lg shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transporte Section -->
+    <section class="py-20 px-6" id="transporte">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl title-font text-center mb-4">Transporte</h2>
+            <div class="section-divider"></div>
+            <p class="text-center max-w-2xl mx-auto mb-12">Hemos organizado transporte para facilitar vuestro desplazamiento</p>
+            
+            <div class="bg-white p-8 rounded-lg shadow-sm">
+                <h3 class="text-2xl title-font mb-6 text-center">Autobuses disponibles</h3>
+                
+                <div class="mb-8">
+                    <h4 class="text-xl font-semibold mb-4">Desde Albacete a La Herrera</h4>
+                    <div class="transport-item">
+                        <div class="transport-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <div>
+                            <p><strong>Salida:</strong> 11:30 AM</p>
+                            <p><strong>Lugar:</strong> Punto de encuentro en la punta del Parque Abelardo Sánchez, Albacete</p>
+                            <p><strong>Llegada aproximada:</strong> 12:15 PM a la Parroquia Ntra. Sra. del Pilar</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <h4 class="text-xl font-semibold mb-4">Desde La Herrera a Finca Las Calabacicas</h4>
+                    <div class="transport-item">
+                        <div class="transport-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <div>
+                            <p><strong>Salida:</strong> 2:30 PM</p>
+                            <p><strong>Lugar:</strong> Frente a la Parroquia Ntra. Sra. del Pilar</p>
+                            <p><strong>Llegada aproximada:</strong> 2:45 PM a Finca Las Calabacicas</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Vuelta desde la Finca</h4>
+                    <div class="transport-item">
+                        <div class="transport-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <div>
+                            <p><strong>Hacia Albacete:</strong></p>
+                            <p>- Salida 1: 8:00 PM</p>
+                            <p>- Salida 2: 10:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="transport-item">
+                        <div class="transport-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <div>
+                            <p><strong>Hacia La Herrera:</strong></p>
+                            <p>- Salida: 9:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-amber-50 p-4 rounded-lg">
+                    <h4 class="text-lg font-semibold mb-2">Importante</h4>
+                    <p>Por favor, indícanos en el formulario de confirmación si necesitarás utilizar el transporte organizado para poder planificar adecuadamente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería Section -->
+    <section class="py-20 px-6 bg-gray-50" id="galeria">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl title-font text-center mb-4">Nuestra Galería</h2>
+            <div class="section-divider"></div>
+            <p class="text-center max-w-2xl mx-auto mb-12">Algunos momentos especiales que hemos compartido</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Couple photo 1" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Couple photo 2" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1529333164850-2c3d0cb8a7b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Couple photo 3" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" alt="Couple photo 4" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1529333164850-09a259c6c944?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Couple photo 5" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Couple photo 6" class="w-full h-64 object-cover">
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-amber-700 hover:bg-amber-800 text-white px-8 py-3 rounded-full transition duration-300">Ver más fotos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regalos Section -->
+    <section class="py-20 px-6">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl title-font text-center mb-4">Regalos</h2>
+            <div class="section-divider"></div>
+            <p class="text-center max-w-2xl mx-auto mb-12">Su presencia es nuestro mejor regalo, pero si desean hacernos un obsequio...</p>
+            
+            <div class="bg-white p-8 rounded-lg shadow-sm">
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Gift registry" class="rounded-lg shadow">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl title-font mb-4">Nuestro deseo</h3>
+                        <p class="text-gray-700 mb-4">Después de pensarlo mucho, hemos decidido que no queremos regalos físicos. Ya tenemos todo lo necesario para comenzar nuestra vida juntos.</p>
+                        <p class="text-gray-700 mb-4">Si deseas hacernos un regalo, agradeceríamos una contribución económica que nos ayudará a hacer realidad nuestro sueño de una luna de miel especial.</p>
+                        <p class="text-gray-700 font-semibold mb-4">Puedes hacer tu transferencia a:</p>
+                        <div class="bg-amber-50 p-4 rounded-lg mb-4">
+                            <p><strong>Titular:</strong> Pilar & Javi</p>
+                            <p><strong>Banco:</strong> Nombre del Banco</p>
+                            <p><strong>IBAN:</strong> ESXX XXXX XXXX XXXX XXXX XXXX</p>
+                        </div>
+                        <p class="text-gray-600 text-sm">* Por favor, indica tu nombre en el concepto para poder agradecerte personalmente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="py-20 px-6 bg-gray-50" id="confirmar">
+    <div class="container mx-auto max-w-4xl">
+        <h2 class="text-3xl md:text-4xl title-font text-center mb-4">Confirma tu asistencia</h2>
+        <div class="section-divider"></div>
+        <p class="text-center max-w-2xl mx-auto mb-12">Por favor confirma tu asistencia antes del 1 de Mayo, 2026</p>
+
+        <div class="bg-white p-8 rounded-lg shadow-sm">
+            <form class="rsvp-form space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block mb-1">Nombre completo*</label>
+                        <input type="text" id="name" name="name" class="w-full px-3 py-2 focus:outline-none" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-1">Correo electrónico*</label>
+                        <input type="email" id="email" name="email" class="w-full px-3 py-2 focus:outline-none" required>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="phone" class="block mb-1">Teléfono*</label>
+                        <input type="tel" id="phone" name="phone" class="w-full px-3 py-2 focus:outline-none" required>
+                    </div>
+                    <div>
+                        <label for="guests" class="block mb-1">Número de invitados*</label>
+                        <select id="guests" name="guests" class="w-full px-3 py-2 focus:outline-none" required>
+                            <option value="" disabled selected>Selecciona</option>
+                            <option value="1">1 persona</option>
+                            <option value="2">2 personas</option>
+                            <option value="3">3 personas</option>
+                            <option value="4">4 personas</option>
+                            <option value="5">5 personas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block mb-4">¿Asistirás a ambos eventos?*</label>
+                    <div class="flex flex-col space-y-3 md:flex-row md:space-y-0 md:space-x-6">
+                        <label class="flex items-center">
+                            <input type="radio" name="attendance" value="ambos" class="mr-2" required>
+                            <span>Sí, a ambos</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="attendance" value="ceremonia" class="mr-2">
+                            <span>Solo ceremonia</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="attendance" value="recepcion" class="mr-2">
+                            <span>Solo recepción</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block mb-4">¿Necesitarás transporte?*</label>
+                    <div class="flex flex-col space-y-3 md:flex-row md:space-y-0 md:space-x-6">
+                        <label class="flex items-center">
+                            <input type="radio" name="transport" value="albacete" class="mr-2">
+                            <span>Sí, desde Albacete</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="transport" value="herrera" class="mr-2">
+                            <span>Sí, desde La Herrera a la finca</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="transport" value="no" class="mr-2">
+                            <span>No, gracias</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="message" class="block mb-1">Mensaje para los novios (opcional)</label>
+                    <textarea id="message" name="message" rows="3" class="w-full px-3 py-2 focus:outline-none"></textarea>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-amber-700 hover:bg-amber-800 text-white px-6 py-3 rounded-full transition duration-300">Confirmar Asistencia</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 bg-gray-900 text-white">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl title-font mb-2">Pilar & Javi</h3>
+                    <p>30 de Mayo, 2026</p>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#" class="text-white hover:text-amber-300 transition">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-amber-300 transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-amber-300 transition">
+                        <i class="fab fa-pinterest-p text-xl"></i>
+                    </a>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p>Para cualquier duda, contáctanos:</p>
+                    <p>correo@pilaryjavi.com</p>
+                    <p>+34 123 456 789</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2024 Pilar & Javi. Todos los derechos reservados.</p>
+                <p class="mt-2">Diseñado con ❤️ para nuestro día especial</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Countdown timer
+        function updateCountdown() {
+            const weddingDate = new Date('May 30, 2026 12:30:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.querySelector('.days').textContent = days.toString().padStart(2, '0');
+            document.querySelector('.hours').textContent = hours.toString().padStart(2, '0');
+            document.querySelector('.minutes').textContent = minutes.toString().padStart(2, '0');
+            document.querySelector('.seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+    const rsvpForm = document.querySelector('.rsvp-form');
+    const submitButton = rsvpForm.querySelector('button[type="submit"]');
+
+    rsvpForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyb1fAiWMhEKiYm_0fAa-4lQRA2tTWXidTgRvL6falzOFqHLY0Eq2gcVV7iV7ZyumE3xQ/exec';
+        const formData = new FormData(rsvpForm);
+        const originalButtonText = submitButton.textContent;
+
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
+
+        fetch(scriptURL, { method: 'POST', body: formData })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                if (data.result === 'success') {
+                    alert('¡Gracias por confirmar tu asistencia! Hemos recibido tus datos. Nos vemos en la boda.');
+                    rsvpForm.reset();
+                } else {
+                    alert('Hubo un error al enviar tu confirmación. Por favor, inténtalo de nuevo o contacta con nosotros. Error: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('Hubo un error al enviar tu confirmación. Por favor, inténtalo de nuevo o contacta con nosotros.');
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            });
+    });
+</script>
+
+</body>
+</html>
